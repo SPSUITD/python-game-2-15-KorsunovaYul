@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="в файле GAME вставлена карта&#10;&#10;в файле animazia сделана анимация ходьбы + анимация нетерпения(моргания), когда игрок долго стоит на одном месте&#10;&#10;в файлах dialog_window пока только попытки сделать диалоговое окно">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,11 +173,28 @@
       <option name="project" value="LOCAL" />
       <updated>1713139192968</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки">
+      <option name="closed" value="true" />
+      <created>1713643019107</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713643019107</updated>
+    </task>
+    <task id="LOCAL-00004" summary="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки">
+      <option name="closed" value="true" />
+      <created>1713643028795</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713643028795</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="в файле GAME вставлена карта&#10;&#10;в файле animazia сделана анимация ходьбы + анимация нетерпения(моргания), когда игрок долго стоит на одном месте&#10;&#10;в файлах dialog_window пока только попытки сделать диалоговое окно" />
-    <option name="LAST_COMMIT_MESSAGE" value="в файле GAME вставлена карта&#10;&#10;в файле animazia сделана анимация ходьбы + анимация нетерпения(моргания), когда игрок долго стоит на одном месте&#10;&#10;в файлах dialog_window пока только попытки сделать диалоговое окно" />
+    <MESSAGE value="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки" />
+    <option name="LAST_COMMIT_MESSAGE" value="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки" />
   </component>
 </project>
