@@ -2,13 +2,12 @@ import arcade
 from animazia import Player, Ded
 import math
 import arcade.gui
-from dialog_1 import Open_Dialog, Dialog
-import os
+from dialog_2 import Open_Dialog, Dialog1
 
 
 
 
-class MyGame(arcade.View):
+class chast_2(arcade.View):
     def __init__(self):
         super().__init__()
 
@@ -61,10 +60,20 @@ class MyGame(arcade.View):
         self.tile_map = arcade.load_tilemap(map_name, self.TILE_SCALING, layer_options)
         self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
-        pole = arcade.Sprite("1/razgovornoe_pole.png", 1)
-        pole.center_x = 250
-        pole.center_y = 1020
-        self.scene.add_sprite("Pole", pole)
+        pole_amalia = arcade.Sprite("1/razgovornoe_pole.png", 1)
+        pole_amalia.center_x = 80
+        pole_amalia.center_y = 800
+        self.scene.add_sprite("Pole_Amalia", pole_amalia)
+
+        pole_rail = arcade.Sprite("1/razgovornoe_pole.png", 1)
+        pole_rail.center_x = 80
+        pole_rail.center_y = 330
+        self.scene.add_sprite("Pole_Rail", pole_rail)
+
+        pole_bella = arcade.Sprite("1/razgovornoe_pole2.png", 1)
+        pole_bella.center_x = 1200
+        pole_bella.center_y = 950
+        self.scene.add_sprite("Pole_Bella", pole_bella)
 
         # я добавляю лишний спрайт для того, чтобы взять у него хитбокс и присвоить другому спрайту
 
@@ -88,23 +97,6 @@ class MyGame(arcade.View):
         self.physics_engine = arcade.PhysicsEnginePlatformer(
             self.player_sprite, gravity_constant=self.GRAVITY, walls=self.walls
         )
-        ded = self.tile_map.object_lists["Ded"]
-        for my_object in ded:
-            cartesian = self.tile_map.get_cartesian(
-                my_object.shape[0], my_object.shape[1]
-            )
-            self.ded = Ded()
-            self.ded.center_x = math.floor(
-                (cartesian[0] + 0.5) * self.tile_map.tile_width
-            )
-            self.ded.center_y = math.floor(
-                (cartesian[1] + 0.3) * (self.tile_map.tile_height * self.TILE_SCALING)
-            )
-            print(self.ded.center_y)
-            self.ded.boundary_top = 1050
-            self.oborot = 0
-            self.scene.add_sprite("Ded", self.ded)
-
 
         open_dialog_button = Open_Dialog()
         self.v_box.add(open_dialog_button)
@@ -196,11 +188,13 @@ class MyGame(arcade.View):
         self.player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
-                self.scene["Pole"],
+                self.scene["Pole_Amalia"],
+                self.scene["Pole_Rail"],
+                self.scene["Pole_Bella"],
             ],
         )
         for collision in self.player_collision_list:
-            if self.scene["Pole"] in collision.sprite_lists:
+            if collision.sprite_lists != []:
                 if self.dialog == 0:
                     if self.vstrecha == 0:
                         self.v_box.clear()
@@ -216,39 +210,62 @@ class MyGame(arcade.View):
                         )
                         open_dialog_button.on_click = self.on_click_open
                         self.vstrecha = 1
-                elif self.dialog == 1:
-                    if self.vstrecha == 1:
-                        self.v_box.clear()
-                        self.v_box = Dialog()
+                if self.scene["Pole_Amalia"] in collision.sprite_lists:
+                    if self.dialog == 1:
+                        if self.vstrecha == 1:
+                            self.v_box.clear()
+                            self.v_box = Dialog1("Pole_Amalia")
 
-                        self.manager.add(
-                            arcade.gui.UIAnchorWidget(
-                                anchor_x="center",
-                                anchor_y='bottom',
-                                child=self.v_box),
-                        )
-                        self.vstrecha = 0
-                    if self.vstrecha == 0 and self.v_box.children == []:
-                        self.dialog = 2
+                            self.manager.add(
+                                arcade.gui.UIAnchorWidget(
+                                    anchor_x="center",
+                                    anchor_y='bottom',
+                                    child=self.v_box),
+                            )
+                            self.vstrecha = 0
+                        if self.vstrecha == 0 and self.v_box.children == []:
+                            self.dialog = 0
+
+                if self.scene["Pole_Rail"] in collision.sprite_lists:
+                    if self.dialog == 1:
+                        if self.vstrecha == 1:
+                            self.v_box.clear()
+                            self.v_box = Dialog1("Pole_Rail")
+
+                            self.manager.add(
+                                arcade.gui.UIAnchorWidget(
+                                    anchor_x="center",
+                                    anchor_y='bottom',
+                                    child=self.v_box),
+                            )
+                            self.vstrecha = 0
+                        if self.vstrecha == 0 and self.v_box.children == []:
+                            self.dialog = 0
+                            
+                if self.scene["Pole_Bella"] in collision.sprite_lists:
+                    if self.dialog == 1:
+                        if self.vstrecha == 1:
+                            self.v_box.clear()
+                            self.v_box = Dialog1("Pole_Bella")
+
+                            self.manager.add(
+                                arcade.gui.UIAnchorWidget(
+                                    anchor_x="center",
+                                    anchor_y='bottom',
+                                    child=self.v_box),
+                            )
+                            self.vstrecha = 0
+                        if self.vstrecha == 0 and self.v_box.children == []:
+                            self.dialog = 0
+
+
+
+
 
 
         if self.player_collision_list == []:
             self.vstrecha = 0
             self.v_box.clear()
-
-        if self.dialog == 2:
-            self.ded.update()
-            if self.ded.top < self.ded.boundary_top and self.oborot == 0:
-                self.ded.change_y = 3
-            if self.ded.top > self.ded.boundary_top and self.oborot == 0:
-                self.oborot = 1
-            if self.oborot == 1:
-                self.ded.change_y = -3
-            if self.ded.change_y == 528:
-                self.dialog = 3
-
-
-#        if self.dialog == 3:
 
 
     def on_click_open(self, event):
