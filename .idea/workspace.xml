@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="если проблемы со шрифтом то у меня в папке 1 есть шрифт, который я везде использую" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,12 +205,39 @@
       <option name="project" value="LOCAL" />
       <updated>1713644096831</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="сделала 1 часть игры до выбора&#10;1 выбор полностью работает&#10;1 концовка есть + после 1 выбора в можно чут чут поболтать с персонажами">
+      <option name="closed" value="true" />
+      <created>1714808088463</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714808088463</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ну и запускать игру с файла game.py">
+      <option name="closed" value="true" />
+      <created>1714808127182</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714808127182</updated>
+    </task>
+    <task id="LOCAL-00009" summary="если проблемы со шрифтом то у меня в папке 1 есть шрифт, который я везде использую">
+      <option name="closed" value="true" />
+      <created>1714808195507</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714808195507</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="в файле GAME вставлена карта&#10;&#10;в файле animazia сделана анимация ходьбы + анимация нетерпения(моргания), когда игрок долго стоит на одном месте&#10;&#10;в файлах dialog_window пока только попытки сделать диалоговое окно" />
     <MESSAGE value="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки" />
-    <option name="LAST_COMMIT_MESSAGE" value="настроила hitbox&#10;&#10;доделала фон с границами, чтобы не уйти за рамки" />
+    <MESSAGE value="сделала 1 часть игры до выбора&#10;1 выбор полностью работает&#10;1 концовка есть + после 1 выбора в можно чут чут поболтать с персонажами" />
+    <MESSAGE value="ну и запускать игру с файла game.py" />
+    <MESSAGE value="если проблемы со шрифтом то у меня в папке 1 есть шрифт, который я везде использую" />
+    <option name="LAST_COMMIT_MESSAGE" value="если проблемы со шрифтом то у меня в папке 1 есть шрифт, который я везде использую" />
   </component>
 </project>
