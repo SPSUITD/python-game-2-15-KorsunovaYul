@@ -2,13 +2,15 @@ import arcade
 from animazia import Player, Ded
 import math
 import arcade.gui
-from dialog_1 import Open_Dialog, Dialog
+from dialog_1 import Open_Dialog, Dialog, Vibor
+from Final_1 import final_1
+from Chast_2 import chast_2
 import os
 
 
 
 
-class MyGame(arcade.View):
+class chast_1(arcade.View):
     def __init__(self):
         super().__init__()
 
@@ -30,8 +32,8 @@ class MyGame(arcade.View):
         self.manager.enable()
         self.v_box = arcade.gui.UIBoxLayout()
         self.background_color = (252, 65, 74, 0)
-        self.vstrecha = 0
-        self.dialog = 0
+        self.vstrecha = 1
+        self.dialog = 1
 
     def setup(self):
 
@@ -66,28 +68,16 @@ class MyGame(arcade.View):
         pole.center_y = 1020
         self.scene.add_sprite("Pole", pole)
 
-        # я добавляю лишний спрайт для того, чтобы взять у него хитбокс и присвоить другому спрайту
 
-        image_source = "1/hitbox.png"
-        self.hitbox = arcade.Sprite(image_source, self.CHARACTER_SCALING)
-        self.hitbox.center_x = 250
-        self.hitbox.center_y = 1100
-
-        self.player_sprite = Player()
-        self.player_sprite.center_x = 250
-        self.player_sprite.center_y = 1100
-        self.player_sprite.hit_box = self.hitbox.hit_box
+        self.player_sprite = arcade.Sprite('1/ella/sidit.png', 1)
+        self.player_sprite.center_x = 220
+        self.player_sprite.center_y = 1170
 
         self.scene.add_sprite("Player", self.player_sprite)
 
         if self.tile_map.background_color:
             arcade.set_background_color(self.tile_map.background_color)
 
-        self.walls = [self.scene["stena"], self.scene["znaki"], self.scene["mebel"], self.scene["graniza"], self.scene["graniza2"], self.scene["personagi"]]
-
-        self.physics_engine = arcade.PhysicsEnginePlatformer(
-            self.player_sprite, gravity_constant=self.GRAVITY, walls=self.walls
-        )
         ded = self.tile_map.object_lists["Ded"]
         for my_object in ded:
             cartesian = self.tile_map.get_cartesian(
@@ -100,8 +90,7 @@ class MyGame(arcade.View):
             self.ded.center_y = math.floor(
                 (cartesian[1] + 0.3) * (self.tile_map.tile_height * self.TILE_SCALING)
             )
-            print(self.ded.center_y)
-            self.ded.boundary_top = 1050
+            self.ded.boundary_top = 1150
             self.oborot = 0
             self.scene.add_sprite("Ded", self.ded)
 
@@ -132,15 +121,6 @@ class MyGame(arcade.View):
 
     def on_key_press(self, key, modifiers):
 
-        if key == arcade.key.UP or key == arcade.key.W:
-            self.player_sprite.change_y = self.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.player_sprite.change_y = -self.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.player_sprite.change_x = -self.PLAYER_MOVEMENT_SPEED
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x = self.PLAYER_MOVEMENT_SPEED
-
         if key == arcade.key.ESCAPE:
             if key == arcade.key.ESCAPE:
                 arcade.exit()
@@ -148,16 +128,6 @@ class MyGame(arcade.View):
         if key == arcade.key.E:
             Open_Dialog().on_click()
 
-    def on_key_release(self, key, modifiers):
-
-        if key == arcade.key.UP or key == arcade.key.W:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.player_sprite.change_y = 0
-        elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.player_sprite.change_x = 0
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x = 0
 
     def center_camera_to_player(self):
 
@@ -174,13 +144,9 @@ class MyGame(arcade.View):
 
         self.camera.move_to(player_centered)
 
-
-
     def on_update(self, delta_time):
 
-        self.physics_engine.update()
         self.center_camera_to_player()
-        self.player_sprite.update()
         self.scene.update_animation(
             delta_time,
             [
@@ -192,7 +158,6 @@ class MyGame(arcade.View):
             ],
         )
 
-
         self.player_collision_list = arcade.check_for_collision_with_lists(
             self.player_sprite,
             [
@@ -201,22 +166,7 @@ class MyGame(arcade.View):
         )
         for collision in self.player_collision_list:
             if self.scene["Pole"] in collision.sprite_lists:
-                if self.dialog == 0:
-                    if self.vstrecha == 0:
-                        self.v_box.clear()
-
-                        open_dialog_button = Open_Dialog()
-                        self.v_box.add(open_dialog_button)
-
-                        self.manager.add(
-                            arcade.gui.UIAnchorWidget(
-                                anchor_x="center",
-                                anchor_y="bottom",
-                                child=self.v_box)
-                        )
-                        open_dialog_button.on_click = self.on_click_open
-                        self.vstrecha = 1
-                elif self.dialog == 1:
+                if self.dialog == 1:
                     if self.vstrecha == 1:
                         self.v_box.clear()
                         self.v_box = Dialog()
@@ -230,33 +180,47 @@ class MyGame(arcade.View):
                         self.vstrecha = 0
                     if self.vstrecha == 0 and self.v_box.children == []:
                         self.dialog = 2
-
+                elif self.dialog == 2:
+                    self.ded.update()
+                    if self.ded.top < self.ded.boundary_top and self.oborot == 0:
+                        self.ded.change_y = 3
+                    if self.ded.top > self.ded.boundary_top and self.oborot == 0:
+                        self.oborot = 1
+                    if self.oborot == 1:
+                        self.ded.change_y = -3
+                    if self.ded.center_y == 525:
+                        self.dialog = 3
+                elif self.dialog == 3:
+                    if self.vstrecha == 0:
+                        self.v_box.clear()
+                        self.v_box = Vibor()
+                        self.v_box.children[0].child.on_click = self.on_click_vibor1
+                        self.v_box.children[1].child.on_click = self.on_click_vibor2
+                        self.manager.add(
+                            arcade.gui.UIAnchorWidget(
+                                anchor_x="center",
+                                anchor_y="center",
+                                child=self.v_box)
+                        )
+                        self.vstrecha = 1
 
         if self.player_collision_list == []:
             self.vstrecha = 0
             self.v_box.clear()
 
-        if self.dialog == 2:
-            self.ded.update()
-            if self.ded.top < self.ded.boundary_top and self.oborot == 0:
-                self.ded.change_y = 3
-            if self.ded.top > self.ded.boundary_top and self.oborot == 0:
-                self.oborot = 1
-            if self.oborot == 1:
-                self.ded.change_y = -3
-            if self.ded.change_y == 528:
-                self.dialog = 3
+    def on_click_vibor1(self, event):
+        print('1 кнопка естттт')
+        game_view = final_1()
+        self.window.show_view(game_view)
+        game_view.setup()
+        arcade.run()
 
-
-#        if self.dialog == 3:
-
-
-    def on_click_open(self, event):
-        self.v_box.clear()
-        self.dialog = 1
-        print("кнопка нажата")
-
-
+    def on_click_vibor2(self, event):
+        print('2 кнопка естттт')
+        game_view = chast_2()
+        self.window.show_view(game_view)
+        game_view.setup()
+        arcade.run()
 
 
 
