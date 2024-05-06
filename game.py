@@ -1,15 +1,21 @@
 import arcade
-from pervoe_okno import Perv_okno
-from Final_1 import final_1
+from loading_views import LoadingView
+
+
+class Window(arcade.Window):
+    def __init__(self):
+        super().__init__(fullscreen=True, title="В поисках Лили", resizable=True)
+        self.views = {}
+
 def main():
-    window = arcade.Window(fullscreen=True, title="В поисках Лили")
+    window = Window()
     window.total_score = 0
-    menu_view = Perv_okno()
-    window.show_view(menu_view)
+    menu_view = LoadingView()
     menu_view.setup()
+    window.show_view(menu_view)
     arcade.run()
+
 
 
 if __name__ == "__main__":
     main()
-

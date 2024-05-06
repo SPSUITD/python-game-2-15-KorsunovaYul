@@ -1,11 +1,9 @@
 import arcade
-from animazia import Player, Ded
+from animazia import Ded
 import math
 import arcade.gui
 from dialog_1 import Open_Dialog, Dialog, Vibor
-from Final_1 import final_1
-from Chast_2 import chast_2
-import os
+
 
 
 
@@ -14,6 +12,7 @@ class chast_1(arcade.View):
     def __init__(self):
         super().__init__()
 
+    def setup(self):
         self.CHARACTER_SCALING = 1
         self.TILE_SCALING = 1
 
@@ -34,8 +33,6 @@ class chast_1(arcade.View):
         self.background_color = (252, 65, 74, 0)
         self.vstrecha = 1
         self.dialog = 1
-
-    def setup(self):
 
         self.camera = arcade.Camera()
         self.gui_camera = arcade.Camera()
@@ -109,12 +106,8 @@ class chast_1(arcade.View):
     def on_draw(self):
 
         self.clear()
-
         self.camera.use()
-
-        # Draw our Scene
         self.scene.draw()
-
         self.gui_camera.use()
         self.manager.draw()
 
@@ -145,7 +138,8 @@ class chast_1(arcade.View):
         self.camera.move_to(player_centered)
 
     def on_update(self, delta_time):
-
+        print("bebra")
+        self.clear()
         self.center_camera_to_player()
         self.scene.update_animation(
             delta_time,
@@ -210,18 +204,20 @@ class chast_1(arcade.View):
 
     def on_click_vibor1(self, event):
         print('1 кнопка естттт')
-        game_view = final_1()
-        self.window.show_view(game_view)
+        self.v_box.clear()
+        self.clear()
+        self.dialog = 0
+        game_view = self.window.views['final_1']
         game_view.setup()
-        arcade.run()
+        self.window.show_view(game_view)
 
     def on_click_vibor2(self, event):
         print('2 кнопка естттт')
-        game_view = chast_2()
-        self.window.show_view(game_view)
+        self.v_box.clear()
+        self.clear()
+        self.dialog = 0
+        game_view = self.window.views['chast_2']
         game_view.setup()
-        arcade.run()
-
-
+        self.window.show_view(game_view)
 
 

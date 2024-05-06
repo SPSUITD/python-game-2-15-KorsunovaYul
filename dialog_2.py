@@ -32,12 +32,27 @@ class Dialog1(arcade.gui.UIBoxLayout):
     def __init__(self, pers):
         super().__init__()
 
-        if pers == "Pole_Amalia":
-            file = '1/Dialog_Amalia1.csv'
-        elif pers == "Pole_Rail":
-            file = '1/Dialog_Rail1.csv'
-        elif pers == "Pole_Bella":
-            file = '1/Dialog_Bella1.csv'
+        if pers == "Pole_Amalia1":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Amalia1.csv'
+        if pers == "Pole_Amalia2":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Amalia2.csv'
+
+        elif pers == "Pole_Rail1":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Rail1.csv'
+        elif pers == "Pole_Rail2":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Rail2.csv'
+
+        elif pers == "Pole_Bella1":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Bella1.csv'
+        elif pers == "Pole_Bella2":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Bella2.csv'
+        elif pers == "Pole_Bella3":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Bella3.csv'
+
+        elif pers == "Pole_Avtomat1":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Avtomat1.csv'
+        elif pers == "Pole_Avtomat2":
+            file = '1/dialogi_v_csv/chast_2/Dialog_Avtomat2.csv'
 
         text = []
         with open(file, encoding="UTF-8") as f:
@@ -130,7 +145,7 @@ class final_dialog(arcade.gui.UIBoxLayout):
     def __init__(self):
         super().__init__()
         text = []
-        with open('1/Dialog1.2.csv', encoding="UTF-8") as f:
+        with open('1/dialogi_v_csv/chast_2/Dialog2.2.csv', encoding="UTF-8") as f:
             rdr = csv.reader(f, delimiter=";")
             c = 0
             for k in rdr:
