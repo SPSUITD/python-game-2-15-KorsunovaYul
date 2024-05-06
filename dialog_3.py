@@ -26,14 +26,39 @@ class Open_Dialog(arcade.gui.UIFlatButton):
         self._text = "Диалог"
         self._style = red_style
 
+class Open_Dver(arcade.gui.UIFlatButton):
+    def __init__(self):
+        super().__init__(x=340, y=200, width=200, height=100)
+        red_style = {
+            "font_name": ("Epilepsy Sans",),
+            "font_size": 25,
+            "font_color": (243, 212, 214),
+            "border_width": 4,
+            "border_color": None,
+            "bg_color": (252, 65, 74),
+
+            # used if button is pressed
+            "bg_color_pressed": (243, 212, 214),
+            "border_color_pressed": None,  # also used when hovered
+            "font_color_pressed": (252, 65, 74),
+        }
+
+        self._text = "Открыть дверь"
+        self._style = red_style
 
 
 class Dialog(arcade.gui.UIBoxLayout):
-    def __init__(self):
+    def __init__(self, pers):
         super().__init__()
 
+        if pers == "Pole_1":
+            file = '1/dialogi_v_csv/chast_3/Dialog3.1.csv'
+        if pers == "Pole_2":
+            file = '1/dialogi_v_csv/chast_3/Dialog3.2.csv'
+
+
         text = []
-        with open('1/dialogi_v_csv/chast_1/Dialog1.1.csv', encoding="UTF-8") as f:
+        with open(file, encoding="UTF-8") as f:
             rdr = csv.reader(f, delimiter=";")
             c = 0
             for k in rdr:
@@ -95,35 +120,11 @@ class Dialog(arcade.gui.UIBoxLayout):
                      dalee_button.with_space_around(top=-50)]
             self.children = v_box
 
-class Vibor(arcade.gui.UIBoxLayout):
-    def __init__(self):
-        super().__init__()
-        self.children = []
-
-        red_style = {
-            "font_name": ("Epilepsy Sans",),
-            "font_size": 25,
-            "font_color": (243, 212, 214),
-            "border_width": 4,
-            "border_color": None,
-            "bg_color": (252, 65, 74),
-
-            # used if button is pressed
-            "bg_color_pressed": (243, 212, 214),
-            "border_color_pressed": None,  # also used when hovered
-            "font_color_pressed": (252, 65, 74),
-        }
-
-        self.vibor1_button = arcade.gui.UIFlatButton(text="Уйти из кафе по настоятельному совету деда", width=500, height=150, style=red_style)
-        self.vibor2_button = arcade.gui.UIFlatButton(text="Остаться и выяснить у других посетителей кафе причину, почему дед так говорит", width=500, height=150, style=red_style)
-
-        self.children = [self.vibor1_button.with_space_around(bottom=20), self.vibor2_button.with_space_around(bottom=20)]
-
 class final_dialog(arcade.gui.UIBoxLayout):
     def __init__(self):
         super().__init__()
         text = []
-        with open('1/dialogi_v_csv/chast_1/Dialog1.2.csv', encoding="UTF-8") as f:
+        with open('1/dialogi_v_csv/chast_3/Dialog3.3.csv', encoding="UTF-8") as f:
             rdr = csv.reader(f, delimiter=";")
             c = 0
             for k in rdr:
