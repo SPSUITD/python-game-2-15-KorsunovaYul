@@ -138,7 +138,6 @@ class chast_1(arcade.View):
         self.camera.move_to(player_centered)
 
     def on_update(self, delta_time):
-        print("bebra")
         self.clear()
         self.center_camera_to_player()
         self.scene.update_animation(

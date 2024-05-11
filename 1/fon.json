@@ -237,11 +237,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/PosledFON\/fon.tsx"
+         "source":"fon.tsx"
         }, 
         {
          "firstgid":78,
-         "source":"..\/..\/PosledFON\/derevo.tsx"
+         "source":"derevo.tsx"
         }, 
         {
          "firstgid":90,

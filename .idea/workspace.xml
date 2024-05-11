@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="ИГРА ПОЛНОСТЬЮ ГОТОВА" />
+    <list default="true" id="6b32ed57-6169-435a-8188-842dc4a3f2d2" name="Changes" comment="ИГРА ПОЛНОСТЬЮ ГОТОВА">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1/fon.json" beforeDir="false" afterPath="$PROJECT_DIR$/1/fon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chast_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chast_1.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +23,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "KorsunovaYul"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="40b61e78-2c99-4779-b297-4fa27182dccd" />
+        <option name="url" value="https://github.com/SPSUITD/python-game-2-15-KorsunovaYul.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -245,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715027544628</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ИГРА ПОЛНОСТЬЮ ГОТОВА">
+      <option name="closed" value="true" />
+      <created>1715027746044</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715027746044</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
